@@ -1,0 +1,31 @@
+import maya.cmds as cmds
+import pymel.core as pm
+
+#list items
+itemList = ['Soda', 'Juice', 'Tea', 'Water']
+
+#prompt user
+userPrompt = cmds.promptDialog(title='Beverages', message='We have Soda, Juice, Tea, or Water. Enter your selection: ', button=['OK', 'Cancel'], defaultButton='OK', cancelButton='Cancel', dismissString='Cancel')
+
+if userPrompt == 'OK':
+    userChoice = str(cmds.promptDialog(query=True, text=True))
+
+#user will choose soda for instance
+print (type(userChoice))
+
+def drinkReady():
+    print('Your beverage is ready')
+
+#if the user selection doesnt match will print message
+#could use a while loop but not optimal when testing
+if userChoice not in itemList:
+    print ('Please type Soda, Juice, Tea, or Water')
+    print ('You entered: ' + userChoice)
+
+
+#if the condition is met and the input matches the list then proceed
+elif userChoice in itemList:
+    print ('You entered: ' + userChoice)
+    print ('Preparing your drink...')
+    print ('..........')
+    drinkReady()
