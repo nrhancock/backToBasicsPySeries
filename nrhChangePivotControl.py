@@ -17,7 +17,6 @@ def create_base():
     pivot_control = pm.circle(name=base_item+'_pivot_control', c=[0, 0, 0], nr=[0, 1, 0], sw=360, r=1, d=3, ut=0, tol=0.01, s=16, ch=1)
     pm.xform(pivot_control[0].cv[0::2], s=[3, 3, 3])
     # pm.makeIdentity(pivot_control, apply=True, t=1, r=1, s=1, n=0)
-    print(pivot_control)
 
     translation_offset = pm.shadingNode('multiplyDivide', asUtility=1)
 
@@ -39,9 +38,11 @@ def create_base():
     # pm.connectAttr(base_item+'.rotate', unit_convert+'.input', f=1)
     # unit_convert.setAttr('conversionFactor', -1)
     # pm.connectAttr(unit_convert+'.output', pivot_control[0]+'.rotate', f=1)
-    pm.setAttr(pivot_control[0]+'.rotateOrder', 5)
+    # pm.setAttr(pivot_control[0]+'.rotateOrder', 5)
 
     this_line = pm.parentConstraint(empty_transform, parent_item, mo=True)
+    # this_line = pm.pointConstraint(empty_transform, parent_item, mo=True)
+    # pm.orientConstraint(selections, empty_transform, mo=True)
 
 
 create_base()
